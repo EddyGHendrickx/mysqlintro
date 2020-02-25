@@ -66,11 +66,10 @@ require_once 'index.php';
 
     <?php
     $connection = openConnection();
-    $userSelect = 'SELECT firstName,lastName,email,preferred_language  FROM students';
+    $userSelect = 'SELECT id,firstName,lastName,email,preferred_language  FROM students';
     $theQuery = $connection->query($userSelect);
     var_dump($theQuery);
     foreach ($connection->query($userSelect) as $user):
-        var_dump($user);
         ?>
         <tr>
             <td>
@@ -91,7 +90,7 @@ require_once 'index.php';
                 <img src="<?php echo 'images/' . $user['preferred_language'] . '.png' ?>" alt="flag">
             </td>
             <td>
-                <a href="http://mysql.local/profile.php?user=<?php echo $user['firstName']; ?>">link to profile
+                <a href="http://mysql.local/profile.php?user=<?php echo $user['id']; ?>">link to profile
             </td>
 
         </tr>

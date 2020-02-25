@@ -8,6 +8,7 @@ require 'connection.php';
 require 'insert.php';
 
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newConnection = openConnection();
     $firstName = $_POST['firstName'];
