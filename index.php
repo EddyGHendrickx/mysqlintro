@@ -8,7 +8,6 @@ require 'connection.php';
 require 'insert.php';
 
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newConnection = openConnection();
     $firstName = $_POST['firstName'];
@@ -26,16 +25,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     var_dump($username);
 
-    $insertCommand = "INSERT INTO students (firstName, lastName, username, linkedin, github, email, 
-                     preferred_language, avatar, video, quote, quote_author) 
-                     VALUES (:firstName, :lastName, :username,:linkedin, :github,
-                     :email, :preferred_language, :avatar, :video, :quote, :quote_author)";
+    $insertCommand = "INSERT INTO students (firstName, lastName, username, linkedin, github, email, preferred_language, avatar, video, quote, quote_author) 
+                                    VALUES (:firstName, :lastName, :username,:linkedin, :github, :email, :preferred_language, :avatar, :video, :quote, :quote_author)";
 
     $newConnection->prepare($insertCommand)
         ->execute([
             'firstName' => $firstName,
-            'lastName' => $lastName, 'username' => $username, 'linkedin' => $linkedin, 'github' => $github,
-            'email' => $email, 'preferred_language' => $preferred_language, 'avatar' => $avatar, 'video' => $video,
-            'quote' => $quote, 'quote_author' => $quote_author]);
+            'lastName' => $lastName,
+            'username' => $username,
+            'linkedin' => $linkedin,
+            'github' => $github,
+            'email' => $email,
+            'preferred_language' => $preferred_language,
+            'avatar' => $avatar,
+            'video' => $video,
+            'quote' => $quote,
+            'quote_author' => $quote_author]);
 }
 

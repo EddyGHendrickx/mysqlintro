@@ -87,7 +87,7 @@ require_once 'index.php';
             </td>
 
             <td>
-                <img src="<?php echo 'images/' . $user['preferred_language'] . '.png' ?>" alt="flag">
+                <img src="<?php echo 'assets/images/' . $user['preferred_language'] . '.png' ?>" alt="flag">
             </td>
             <td>
                 <a href="http://mysql.local/profile.php?user=<?php echo $user['id']; ?>">link to profile
