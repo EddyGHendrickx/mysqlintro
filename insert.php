@@ -1,11 +1,7 @@
-<?php
-require_once 'connection.php';
-require_once 'index.php';
-?>
 <!DOCTYPE html>
 <html>
 <body>
-<form action="index.php" method="post">
+<form action="" method="post">
     <h1>make user</h1>
     <section>
         <label for="firstName">Write firstName here</label>
@@ -65,11 +61,11 @@ require_once 'index.php';
 <table border="1">
 
     <?php
-    $connection = openConnection();
-    $userSelect = 'SELECT id,firstName,lastName,email,preferred_language  FROM students';
-    $theQuery = $connection->query($userSelect);
-    var_dump($theQuery);
-    foreach ($connection->query($userSelect) as $user):
+    $connection = new Connection();
+    $connection = $connection->openConnection();
+    $query = new Query();
+    $query->createUsers();
+    foreach ($query->getAllUsers() as $user):
         ?>
         <tr>
             <td>
@@ -90,7 +86,7 @@ require_once 'index.php';
                 <img src="<?php echo 'assets/images/' . $user['preferred_language'] . '.png' ?>" alt="flag">
             </td>
             <td>
-                <a href="http://mysql.local/profile.php?user=<?php echo $user['id']; ?>">link to profile
+                    <a href="?user=<?php echo $user['id']; ?>">link to profile
             </td>
 
         </tr>
